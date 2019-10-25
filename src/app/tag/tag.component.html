@@ -1,0 +1,43 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="margin-bottom: 25px; background: white; width: fit-content;">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item" aria-current="page">Tags</li>
+  </ol>
+</nav>
+
+<div class="row" style="margin-top:12px;">
+  <div class="col-md-2">
+    <h2><strong><i class="fa fa-tags"></i>&nbsp;Tags</strong></h2>
+  </div>
+  <div class="col-md-6">
+    <button type="button" class="btn btn-success " style="margin: 5px;" routerLink="/addtag"><i class="fa fa-plus"></i>
+      New Tag
+    </button>
+    <button type="buton" class="btn btn-danger " style="margin: 5px;"><i class="fa fa-trash"></i> Delete Tag
+    </button>
+
+  </div>
+
+</div>
+<div class="row" style="margin-top: 15px;">
+  <div class="col-md-10 " style="margin: 10px; width: 100%;">
+    <div class="card " style="padding: 15px;">
+      <table datatable [dtTrigger]="dtTrigger" class="row-border hover" id="tag-table">
+        <thead>
+          <tr>
+            <th scope="col"><input type="checkbox"/></th>
+            <th scope="col">Title</th>
+            <th scope="col">Create Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tag of tags">
+            <td><input type="checkbox" [name]="id" [value]="tag"/></td>
+            <td>{{ tag.title }}</td>
+            <td>{{ tag.createdAt }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

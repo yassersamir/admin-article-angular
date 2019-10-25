@@ -1,0 +1,47 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="margin-bottom: 25px; background: white; width: fit-content;">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item" aria-current="page">Article</li>
+  </ol>
+</nav>
+
+<div class="row" style="margin-top:25px;">
+  <div class="col-md-2 ">
+    <h2><strong><i class="fa fa-book"></i>&nbsp;Articles</strong></h2>
+  </div>
+  <div class="col-md-6">
+    <button type="button" class="btn btn-success " style="margin: 5px;" routerLink="/addarticle"><i
+        class="fa fa-plus"></i> New Article
+    </button>
+    <button type="buton" class="btn btn-danger " style="margin: 5px;"><i class="fa fa-trash"></i> Delete Article
+    </button>
+
+  </div>
+
+</div>
+<div class="row" style="margin-top: 15px;">
+  <div class="card " style="padding: 15px;">
+    <table datatable [dtTrigger]="dtTrigger" class="row-border hover" id="article-table">
+      <thead>
+        <tr>
+          <th scope="col"><input type="checkbox"/></th>
+          <th scope="col">Title</th>
+          <th scope="col">Descreption</th>
+          <th scope="col">Image</th>
+          <th scope="col">User Name</th>
+          <th scope="col">Create Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of articles">
+          <td><input type="checkbox" [name]="id" [value]="article"/></td>
+          <td>{{ article.title }}</td>
+          <td>{{ article.descreption }}</td>
+          <td>{{ article.image }}</td>
+          <td>{{ article.user_name }}</td>
+          <td>{{ article.createdAt }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

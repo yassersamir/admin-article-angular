@@ -1,0 +1,86 @@
+<nav aria-label="breadcrumb" >
+    <ol class="breadcrumb" style="margin-bottom: 25px; background: white; width: fit-content;">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item" ><a routerLink="/articles">Article</a></li>
+      <li class="breadcrumb-item" aria-current="page">Add Article</li>
+    </ol>
+  </nav>
+  <h2><strong><i class="fa fa-book" style="margin-top: 25px;"></i>&nbsp;Add Article</strong></h2>
+
+  <div class="row">
+    <div class="col-md-10 " style="margin: 10px;">
+      <div class="card "  style="padding: 15px;">
+        <form name="form" #f="ngForm" (ngSubmit)="f.form.valid &&postArticle()" novalidate class="article-form">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text"
+                     id="title"
+                     class="form-control"
+                     name="title"
+                     placeholder="Title"
+                     [(ngModel)]="model.title"
+                     #title="ngModel"
+                     [ngClass]="{ 'is-invalid': f.submitted && title.invalid }"
+                     required/>
+                     <div *ngIf="f.submitted && title.invalid" class="invalid-input">
+                      <!-- individual validation errors -->
+                      <div *ngIf="title.errors?.required">Title is required</div>
+                    </div>
+          </div>
+          <div class="form-group">
+            <label for="descreption">Descreption</label>
+            <textarea [froalaEditor] 
+            name="descreption"
+            [(ngModel)]="model.descreption"
+            #descreption="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && descreption.invalid }"
+             required
+            ></textarea>
+            <div *ngIf="f.submitted && descreption.invalid" class="invalid-input">
+              <!-- individual validation errors -->
+              <div *ngIf="descreption.errors?.required">Descreption is required</div>
+            </div>
+          </div>
+          <div class="form-group"  >
+            <label for="image">Image</label>
+            <input type='file' 
+            class="form-control"
+            name="image"
+            [(ngModel)]="model.image"
+            #image="ngModel"
+            (change)="onSelectFile($event)"
+            >
+            <div *ngIf="url!=null" >
+            <img [src]="url" height="auto" width="800"> </div>
+          </div>
+          <div class="form-group">
+            <label for="user_name">User Name</label>
+            <input type="text"
+                     id="user_name"
+                     class="form-control"
+                     name="user_name"
+                     placeholder="user name"
+                     [(ngModel)]="model.user_name"
+                     #user_name="ngModel"
+                     [ngClass]="{ 'is-invalid': f.submitted && user_name.invalid }"
+                     required/>
+                     <div *ngIf="f.submitted && user_name.invalid" class="invalid-input">
+                      <!-- individual validation errors -->
+                      <div *ngIf="title.errors?.required">your name is required</div>
+                    </div>
+          </div>
+          <div class="form-group"  >
+            <mat-form-field>
+              <mat-label>Tags</mat-label>
+              <mat-select [formControl]="toppings" multiple  [(value)]="selected">
+                <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.title}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+          </div>
+          <button type="submit" class="btn btn-info pull-right">
+            <span> Save article</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,28 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" [class.active]="classApplied">
+        <div class="sidebar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info"  (click)="toggleClass()">
+                    <i class="fas fa-align-left"></i>
+                <span>&nbsp;article admin</span>
+                </button>
+        </div>
+        <ul class="list-unstyled components">
+            <li >
+                <a routerLink="/articles"><i class="fa fa-book"></i>&nbsp;Articles
+                </a>
+            </li>
+            <li  >
+                <a routerLink="/tags"><i class="fa fa-tags"  ></i>&nbsp;Tags
+                </a>
+            </li>
+        </ul>
+
+        
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <router-outlet></router-outlet>
+        </div>
+</div>
